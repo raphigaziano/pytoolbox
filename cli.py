@@ -41,8 +41,8 @@ def yes_no_prompt(msg):
             prompt = input('Please answer by y(es) or n(o) ').lower()
 
 # Shamelessly stolen from the grin source
-COLOR_TABLE = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan',
-               'white', 'default']
+_COLOR_TABLE = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan',
+                'white', 'default']
 
 def colorize(s, fg=None, bg=None, bold=False, underline=False, reverse=False):
     """ Wraps a string with ANSI color escape sequences corresponding to the
@@ -71,12 +71,12 @@ def colorize(s, fg=None, bg=None, bold=False, underline=False, reverse=False):
     """
     
     style_fragments = []
-    if fg in COLOR_TABLE:
+    if fg in _COLOR_TABLE:
         # Foreground colors go from 30-39
-        style_fragments.append(COLOR_TABLE.index(fg) + 30)
-    if bg in COLOR_TABLE:
+        style_fragments.append(_COLOR_TABLE.index(fg) + 30)
+    if bg in _COLOR_TABLE:
         # Background colors go from 40-49
-        style_fragments.append(COLOR_TABLE.index(bg) + 40)
+        style_fragments.append(_COLOR_TABLE.index(bg) + 40)
     if bold:
         style_fragments.append(1)
     if underline:
