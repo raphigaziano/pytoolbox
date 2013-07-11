@@ -17,7 +17,6 @@ def path_to_basename(path, stripext=False):
 ### File listing ###
 ####################
 
-# TODO: Add a filter arg (regex?)
 def list_files(startdir, recursive=False, abspathes=True, pattern=None):
     """
     Yield files contained in `startdir`.
