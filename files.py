@@ -1,3 +1,4 @@
+import fnmatch
 import os
 
 ### Path manipulations ###
@@ -16,14 +17,17 @@ def path_to_basename(path, stripext=False):
 ### File listing ###
 ####################
 
-def list_files(startdir, recursive=False, abspathes=True):
+# TODO: Add a filter arg (regex?)
+def list_files(startdir, recursive=False, abspathes=True, pattern=None):
     """
     Yield files contained in `startdir`.
     Optionnal parameters:
     `recursive`: Look for files recursively. Defaults to False.
     `abspathes`: Return absolute pathes. Defaults to True.
+    `pattern`:   Unix glob pattern to filter files further
     """
-    for f in os.listdir(startdir):
+    for f in fnmatch.filter(os.listdir(startdir),
+                            pattern if pattern else '*'):
         path = os.path.join(startdir, f)
         if os.path.isfile(path):
             if abspathes:
