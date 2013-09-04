@@ -34,7 +34,7 @@ def list_files(startdir, recursive=False, abspathes=True, pattern=None):
                 continue
             yield path
         elif recursive and os.path.isdir(path):
-            for sub in list_files(path, recursive, abspathes):
+            for sub in list_files(path, recursive, abspathes, pattern):
                 yield sub
 
 ### File(s) Size Utils ###
